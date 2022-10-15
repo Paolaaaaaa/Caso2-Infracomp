@@ -51,7 +51,9 @@ public class AgingAlgorithm implements Runnable {
         this.tbl_tab = new Integer[tlb] ;
         this.lstInt = -1;
     }
-
+    public AgingAlgorithm() {
+        
+    }
     @Override
     public void run() {
         ageingAlgorithm(this.nums, this.ram, this.tlb);
