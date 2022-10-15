@@ -16,7 +16,9 @@ public class AgingAlgorithm implements Runnable {
         this.ram = ram;
         this.tlb = tlb;
     }
-
+    public AgingAlgorithm() {
+        
+    }
     @Override
     public void run() {
         ageingAlgorithm(this.nums, this.ram, this.tlb);
