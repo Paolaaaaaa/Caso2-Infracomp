@@ -11,6 +11,7 @@ public class Main {
 
         ArrayList<Integer> nums = reader.readFile("examples/test_A2_R32_P8.txt");
         agingAlgorithm = new AgingAlgorithm(nums,  ram,  tlb);
+        agingAlgorithm.run();
 
         System.out.println("Data recieved: "+ nums.toString());
     }
