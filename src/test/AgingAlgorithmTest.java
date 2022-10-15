@@ -17,7 +17,8 @@ public class AgingAlgorithmTest {
 
     @Test
     void ageingAlgorithm() {
-        assertAll(()->
+        assertAll(
+                ()->
                     assertEquals(11, ageing.ageingAlgorithm(
                             read.readFile("examples/test_A_R32_P8.txt"),
                             4,
