@@ -9,9 +9,10 @@ public class Main {
 
         reader = new FReader();
 
-        ArrayList<Integer> nums = reader.readFile("examples/test_A2_R32_P8.txt");
+        ArrayList<Integer> nums = reader.readFile("examples/test_B2_R32_P8.txt");
         agingAlgorithm = new AgingAlgorithm(nums,  ram,  tlb);
         agingAlgorithm.run();
+        //while (true){agingAlgorithm.run();wait(1);}// para que corra cada milisegundo
 
         System.out.println("Data recieved: "+ nums.toString());
     }
