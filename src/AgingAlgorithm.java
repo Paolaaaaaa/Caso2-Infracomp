@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class AgingAlgorithm implements Runnable {
     ArrayList<Integer> nums;
-    int ram;
     int tlb;
     private static Integer[]  tbl_tab ;// talb
     private static Integer lstInt;// ultima posicion en actualizar
+    TablaPagina tp;
 
-    public int ageingAlgorithm(ArrayList<Integer> nums, int ram, int tlb) {
+    public int ageingAlgorithm(ArrayList<Integer> nums, TablaPagina tp, int tlb) {
         int ret = 0;
         this.tbl_tab = new Integer[tlb] ;
 
@@ -26,6 +26,7 @@ public class AgingAlgorithm implements Runnable {
                     if ( intable== false && lstInt<tbl_tab.length-1)
                     {
                         this.lstInt ++;
+                        tp.run(nums.get(i));
 
 
 
@@ -37,6 +38,8 @@ public class AgingAlgorithm implements Runnable {
                     else if (intable ==false && lstInt==tbl_tab.length-1)// si no está en la tabla y el apuntador llegó al ultimo elmento  se cambia el elemento del inicio que era el más antiguo
                     {
                         this.lstInt = 0;
+                        tp.run(nums.get(i));
+
                         this.tbl_tab[this.lstInt]=nums.get(i);
 
                         ret++; // hay fallo de pagia ya que no estba en la tabla
@@ -52,9 +55,9 @@ public class AgingAlgorithm implements Runnable {
         return ret;
     }
 
-    public AgingAlgorithm(ArrayList<Integer> nums, int ram, int tlb) {
+    public AgingAlgorithm(ArrayList<Integer> nums,TablaPagina tp, int tlb) {
         this.nums = nums;
-        this.ram = ram;
+        this.tp =tp;
         this.tlb = tlb;
         this.tbl_tab = new Integer[tlb] ;
         this.lstInt = -1;
@@ -67,6 +70,6 @@ public class AgingAlgorithm implements Runnable {
 
     @Override
     public void run() {
-        ageingAlgorithm(this.nums, this.ram, this.tlb);
+        ageingAlgorithm(this.nums, this.tp, this.tlb);
     }
 }

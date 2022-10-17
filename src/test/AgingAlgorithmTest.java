@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AgingAlgorithmTest {
     AgingAlgorithm ageing = new AgingAlgorithm();
     FReader read = new FReader();
+    TablaPagina tp = new TablaPagina(4);
 
     @Test
     void AgingAlgorithmTest(){
@@ -19,22 +20,22 @@ public class AgingAlgorithmTest {
     void ageingAlgorithm() {
                     assertEquals(11, ageing.ageingAlgorithm(
                             read.readFile("examples/test_A_R32_P8.txt"),
-                            4,
+                            tp,
                             4
                     ));
                         assertEquals(12, ageing.ageingAlgorithm(
                                 read.readFile("examples/test_B_R32_P8.txt"),
-                                4,
+                                tp,
                                 4
                         ));
                         assertEquals(7, ageing.ageingAlgorithm(
                                 read.readFile("examples/test_A2_R32_P8.txt"),
-                                4,
+                                tp,
                                 4
                         ));
                         assertEquals(15, ageing.ageingAlgorithm(
                                 read.readFile("examples/test_B2_R32_P8.txt"),
-                                4,
+                                tp,
                                 4));
 
     }

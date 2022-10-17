@@ -30,9 +30,10 @@ public class Main {
         int tlb = 4;
 
         reader = new FReader();
+        tp = new TablaPagina(ram);
 
         ArrayList<Integer> nums = reader.readFile("examples/test_A2_R32_P8.txt");
-        agingAlgorithm = new AgingAlgorithm(nums,  ram,  tlb);
+        agingAlgorithm = new AgingAlgorithm(nums,  tp,  tlb);
         agingAlgorithm.run();
         //while (true){agingAlgorithm.run();wait(1);}// para que corra cada milisegundo
 

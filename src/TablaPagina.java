@@ -1,11 +1,10 @@
 public class TablaPagina  extends Thread{
 
     private static Integer[] table_p;
-    private static Integer ram;
     private static Integer[] table_ram;
     private static Integer apuntadorRam;
 
-    public TablaPagina()
+    public TablaPagina(Integer ram)
     {
         this.table_p= new Integer[64];// para 64 paginas
         this.table_ram= new Integer[ram];// para marcos de pagina
