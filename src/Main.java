@@ -1,28 +1,17 @@
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     static FReader reader;
     static AgingAlgorithm agingAlgorithm;
-    static Integer time;
     static TablaPagina tp;
+    static Time_ timee;
     public Main()
     {
-        this.time = 0;
 
     }
 
-    public Integer getTime() {
-        return this.time;
-    }
-    public Integer setTime(Integer nuevtime)
-    {
-        return this.time=nuevtime;
-    }
-    public Integer sumTime(Integer time1)
-    {
-        return this.time+=time1;
-    }
 
 
     public static void main(String[] args) {
@@ -30,10 +19,12 @@ public class Main {
         int tlb = 4;
 
         reader = new FReader();
-        tp = new TablaPagina(ram);
+        timee = new Time_();
+
+        tp = new TablaPagina(ram,timee);
 
         ArrayList<Integer> nums = reader.readFile("examples/test_A2_R32_P8.txt");
-        agingAlgorithm = new AgingAlgorithm(nums,  tp,  tlb);
+        agingAlgorithm = new AgingAlgorithm(nums,  tp,  tlb, timee);
         agingAlgorithm.run();
         //while (true){agingAlgorithm.run();wait(1);}// para que corra cada milisegundo
 
@@ -44,5 +35,8 @@ public class Main {
         //ram= input.nextInt();
 
         System.out.println("Data recieved: "+ nums.toString());
+
+
+        System.out.println("En tiempo total de respuesta es de :"+timee.getTime().toString()+" ns (nano segundos)");
     }
 }

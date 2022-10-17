@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,10 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AgingAlgorithmTest {
     AgingAlgorithm ageing = new AgingAlgorithm();
     FReader read = new FReader();
-    TablaPagina tp = new TablaPagina(4);
+    Time_ time = new Time_();
+    TablaPagina tp = new TablaPagina(4, time);
 
     @Test
     void AgingAlgorithmTest(){
+
+    }
+    @AfterEach
+    void before()
+    {
+       time = new Time_();
+        tp = new TablaPagina(4, time);
+        ageing = new AgingAlgorithm();
+
 
     }
 

@@ -1,3 +1,4 @@
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class AgingAlgorithm implements Runnable {
@@ -6,6 +7,7 @@ public class AgingAlgorithm implements Runnable {
     private static Integer[]  tbl_tab ;// talb
     private static Integer lstInt;// ultima posicion en actualizar
     TablaPagina tp;
+    Time_ time;
 
     public int ageingAlgorithm(ArrayList<Integer> nums, TablaPagina tp, int tlb) {
         int ret = 0;
@@ -18,6 +20,7 @@ public class AgingAlgorithm implements Runnable {
                 for (int j = 0; j < tlb; j++) {
                     if (this.tbl_tab[j]!= null && this.tbl_tab[j].equals(nums.get(i))) {
                         intable = true;
+                        time.sumTime(2);
                         // suma 2ns
                         break;
                     } // si ya está en la tabla se para el for
@@ -27,11 +30,10 @@ public class AgingAlgorithm implements Runnable {
                     {
                         this.lstInt ++;
                         tp.run(nums.get(i));
-
-
-
                         this.tbl_tab[this.lstInt]= nums.get(i);// si no está en tabla y el apuntador está dentro del rango se cambia la entrada del elemento más antiguo
                         ret ++; // hay fallo de pagina
+                        time.sumTime(30);
+
 
 
                     }
@@ -39,8 +41,9 @@ public class AgingAlgorithm implements Runnable {
                     {
                         this.lstInt = 0;
                         tp.run(nums.get(i));
-
                         this.tbl_tab[this.lstInt]=nums.get(i);
+                        time.sumTime(30);
+
 
                         ret++; // hay fallo de pagia ya que no estba en la tabla
                     }
@@ -55,12 +58,13 @@ public class AgingAlgorithm implements Runnable {
         return ret;
     }
 
-    public AgingAlgorithm(ArrayList<Integer> nums,TablaPagina tp, int tlb) {
+    public AgingAlgorithm(ArrayList<Integer> nums,TablaPagina tp, int tlb, Time_ time) {
         this.nums = nums;
         this.tp =tp;
         this.tlb = tlb;
         this.tbl_tab = new Integer[tlb] ;
         this.lstInt = -1;
+        this.time = time;
     }
 
     public AgingAlgorithm() {
