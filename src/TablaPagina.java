@@ -60,6 +60,7 @@ public class TablaPagina  extends Thread{
         if (direccionreal==-1)// cuando no existe la dirección real/ tp
         {
             cargardataRam(direccion);// se carga desde el disco
+            run(direccion);//se vuelve a hacer la consulta en tp
 
         }
         else
