@@ -27,9 +27,9 @@ public class TablaPagina  extends Thread{
         return respuesta;
 
     }
-    public long getFromRam(Integer direccion)
+    public Integer getFromRam(Integer direccion)
     {
-        long respuesta = 0;
+        Integer respuesta = -1;
         if (this.table_ram[direccion]!=null)
         {
             time.sumTime(30);
@@ -44,7 +44,7 @@ public class TablaPagina  extends Thread{
     {
         this.table_ram[apuntadorRam]=muns;
         this.table_p[muns]=apuntadorRam;
-        time.sumTime(10);
+        time.sumTime(10000000);
         apuntadorRam++;// dice cual es el siguiente espacio a llenar
         if(apuntadorRam==table_ram.length)
         {
@@ -66,7 +66,13 @@ public class TablaPagina  extends Thread{
         else
 
         {
-            getFromRam(direccionreal);
+            Integer dir =getFromRam(direccionreal);
+            if (dir==-1)
+            {
+                cargardataRam(direccion);
+                run(direccion);
+
+            }
 
         }
 

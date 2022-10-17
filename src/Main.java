@@ -39,5 +39,9 @@ public class Main {
 
 
         System.out.println("En tiempo total de respuesta es de :"+timee.getTime().toString()+" ns (nano segundos)");
+        Float segundos = Float.parseFloat(timee.getTime().toString());
+        segundos=segundos/1000000000;
+        System.out.println("En tiempo total de respuesta es de :"+segundos.toString()+" segundos");
+
     }
 }
