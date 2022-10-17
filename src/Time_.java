@@ -1,20 +1,20 @@
 public class Time_ {
 
-    static Integer time;
+    static Long time;
 
 
     public Time_(){
-       this.time = 0;
+       this.time = 0L;
     }
 
-    public Integer getTime() {
+    public Long getTime() {
         return this.time;
     }
-    public Integer setTime(Integer nuevtime)
+    public Long setTime(Long nuevtime)
     {
         return this.time=nuevtime;
     }
-    public Integer sumTime(Integer time1)
+    public Long sumTime(Long time1)
     {
         return this.time+=time1;
     }
