@@ -44,7 +44,7 @@ public class TablaPagina  extends Thread{
     {
         this.table_ram[apuntadorRam]=muns;
         this.table_p[muns]=apuntadorRam;
-        time.sumTime(10000000);
+        time.sumTime(10000000);// 1 ms por la carga de memoria secundaria a memoria ram
         apuntadorRam++;// dice cual es el siguiente espacio a llenar
         if(apuntadorRam==table_ram.length)
         {

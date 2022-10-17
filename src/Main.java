@@ -22,7 +22,7 @@ public class Main {
         timee = new Time_();
 
 
-        ArrayList<Integer> nums = reader.readFile("examples/ej_Alta_64paginas.txt");
+        ArrayList<Integer> nums = reader.readFile("examples/ej_Baja_64 paginas.txt");
 
         //while (true){agingAlgorithm.run();wait(1);}// para que corra cada milisegundo
 
