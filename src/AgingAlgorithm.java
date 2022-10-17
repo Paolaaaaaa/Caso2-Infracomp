@@ -20,7 +20,7 @@ public class AgingAlgorithm implements Runnable {
                 for (int j = 0; j < tlb; j++) {
                     if (this.tbl_tab[j]!= null && this.tbl_tab[j].equals(nums.get(i))) {
                         intable = true;
-                        time.sumTime(2);
+                        time.sumTime(2L);
                         // suma 2ns
                         break;
                     } // si ya está en la tabla se para el for
@@ -32,7 +32,7 @@ public class AgingAlgorithm implements Runnable {
                         tp.run(nums.get(i));
                         this.tbl_tab[this.lstInt]= nums.get(i);// si no está en tabla y el apuntador está dentro del rango se cambia la entrada del elemento más antiguo
                         ret ++; // hay fallo de pagina
-                        time.sumTime(30);
+                        time.sumTime(30L);
 
 
 
@@ -42,7 +42,7 @@ public class AgingAlgorithm implements Runnable {
                         this.lstInt = 0;
                         tp.run(nums.get(i));
                         this.tbl_tab[this.lstInt]=nums.get(i);
-                        time.sumTime(30);
+                        time.sumTime(30L);
 
 
                         ret++; // hay fallo de pagia ya que no estba en la tabla

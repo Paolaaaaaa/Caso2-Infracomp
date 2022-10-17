@@ -3,12 +3,14 @@ public class TablaPagina  extends Thread{
     private static Integer[] table_p;
     private static Integer[] table_ram;
     private static Integer apuntadorRam;
+    private static Integer[] appTablep;
     Time_ time;
 
     public TablaPagina(Integer ram, Time_ time)
     {
         this.table_p= new Integer[64];// para 64 paginas
         this.table_ram= new Integer[ram];// para marcos de pagina
+        this.appTablep = new Integer[ram];
         this.apuntadorRam = 0;
         this.time = time;
 
@@ -20,7 +22,7 @@ public class TablaPagina  extends Thread{
         Integer respuesta = -1;
         if (this.table_p[entrada] != null)
         {
-            time.sumTime(10);// tiempo de traducción de direcciones
+            time.sumTime(10L);// tiempo de traducción de direcciones
             respuesta=this.table_p[entrada];
 
         }
@@ -32,7 +34,7 @@ public class TablaPagina  extends Thread{
         Integer respuesta = -1;
         if (this.table_ram[direccion]!=null)
         {
-            time.sumTime(30);
+            time.sumTime(30L);
             respuesta=this.table_ram[direccion];
 
         }
@@ -40,11 +42,27 @@ public class TablaPagina  extends Thread{
 
     }
 
+    public synchronized void serchErr()
+    {
+        if (appTablep[apuntadorRam]!=null)
+        {
+            this.table_p[appTablep[apuntadorRam]]=-1;// actualización ultimo numero antes de este en cambiar en tp
+
+
+        }
+
+    }
+
     public synchronized void cargardataRam(Integer muns)
     {
-        this.table_ram[apuntadorRam]=muns;
-        this.table_p[muns]=apuntadorRam;
-        time.sumTime(10000000);// 1 ms por la carga de memoria secundaria a memoria ram
+
+        this.table_ram[apuntadorRam]=muns;//  nuevo numero en ram
+
+        this.table_p[muns]=apuntadorRam;//nuevo numero en tp
+        serchErr(); //actualización numero antiguo
+        this.appTablep[apuntadorRam]=muns;// ultimo numero en cambiar en la tp
+
+        time.sumTime(10000000L);// 1 ms por la carga de memoria secundaria a memoria ram
         apuntadorRam++;// dice cual es el siguiente espacio a llenar
         if(apuntadorRam==table_ram.length)
         {
