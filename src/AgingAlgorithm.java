@@ -53,7 +53,7 @@ public class AgingAlgorithm implements Runnable {
 
 
         }
-        System.out.println(ret);
+        System.out.println("Fallos de paginas: "+ret);
 
         return ret;
     }
