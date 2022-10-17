@@ -20,7 +20,7 @@ public class TablaPagina  extends Thread{
         Integer respuesta = -1;
         if (this.table_p[entrada] != null)
         {
-            time.sumTime(10);
+            time.sumTime(10);// tiempo de traducción de direcciones
             respuesta=this.table_p[entrada];
 
         }
@@ -45,7 +45,7 @@ public class TablaPagina  extends Thread{
         this.table_ram[apuntadorRam]=muns;
         this.table_p[muns]=apuntadorRam;
         time.sumTime(10);
-        apuntadorRam++;
+        apuntadorRam++;// dice cual es el siguiente espacio a llenar
         if(apuntadorRam==table_ram.length)
         {
             apuntadorRam=0;
